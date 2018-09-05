@@ -5,6 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,11 +18,16 @@ import io.github.zeleven.playa.di.component.DaggerActivityComponent;
 import io.github.zeleven.playa.ui.module.main.MainActivity;
 import io.github.zeleven.playa.utils.NetworkUtils;
 
-public abstract class BaseActivity extends AppCompatActivity implements BaseContract.View {
+public abstract class BaseActivity<P extends BaseContract.Presenter>
+        extends AppCompatActivity implements BaseContract.View {
+    @Inject protected P presenter;
+
     @Nullable @BindView(R.id.toolbar) protected Toolbar toolbar;
     @Nullable @BindView(R.id.appbar_layout) protected AppBarLayout appbarLayout;
 
     protected ActivityComponent activityComponent;
+
+    public abstract int getLayout();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +47,13 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         }
     }
 
-    public abstract int getLayout();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (presenter != null) {
+            presenter.detachView();
+        }
+    }
 
     @Override
     public boolean isNetworkConnected() {
@@ -48,6 +62,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
 
     @Override
     public void showError(String message) {
-
+        Log.e(getClass().getName(), message);
     }
 }
