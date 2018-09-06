@@ -9,12 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import io.github.zeleven.playa.Playa;
 import io.github.zeleven.playa.di.component.DaggerFragmentComponent;
 import io.github.zeleven.playa.di.component.FragmentComponent;
 
-public abstract class BaseFragment extends Fragment implements BaseContract.View {
+public abstract class BaseFragment<P extends BaseContract.Presenter> extends Fragment
+        implements BaseContract.View {
+    @Inject protected P presenter;
+
     protected Context context;
     protected FragmentComponent fragmentComponent;
 
@@ -41,6 +46,14 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
     public abstract int getLayout();
 
     public void onFragmentViewCreated() {}
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (presenter != null) {
+            presenter.detachView();
+        }
+    }
 
     @Override
     public boolean isNetworkConnected() {
