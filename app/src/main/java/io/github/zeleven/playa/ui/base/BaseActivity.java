@@ -6,6 +6,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 
 import javax.inject.Inject;
 
@@ -69,5 +70,15 @@ public abstract class BaseActivity<P extends BaseContract.Presenter>
         if (appbarLayout != null) {
             appbarLayout.setElevation(enable ? getResources().getDimension(R.dimen.four_dp) : 0.0f);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
