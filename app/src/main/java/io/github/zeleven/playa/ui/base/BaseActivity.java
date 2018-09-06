@@ -64,4 +64,10 @@ public abstract class BaseActivity<P extends BaseContract.Presenter>
     public void showError(String message) {
         Log.e(getClass().getName(), message);
     }
+
+    public void enableAppBarElevation(boolean enable) {
+        if (appbarLayout != null) {
+            appbarLayout.setElevation(enable ? getResources().getDimension(R.dimen.four_dp) : 0.0f);
+        }
+    }
 }
