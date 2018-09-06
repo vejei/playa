@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
@@ -46,6 +47,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         createFragments();
         // 默认选中第一个 fragment，即 BottomNavigationView 的第一项
         selectFragment(0);
+        getSupportActionBar().setTitle(R.string.home);
 
         setupBottomNavigationView();
     }
@@ -67,25 +69,32 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         boolean setElevation = true;
+                        int titleResId = R.string.home;
                         switch (item.getItemId()) {
                             case R.id.home:
                                 selectFragment(0);
+                                titleResId = R.string.home;
                                 break;
                             case R.id.project:
                                 selectFragment(1);
                                 setElevation = false;
+                                titleResId = R.string.project;
                                 break;
                             case R.id.hierarchy:
                                 selectFragment(2);
+                                titleResId = R.string.hierarchy;
                                 break;
                             case R.id.navigation:
                                 selectFragment(3);
+                                titleResId = R.string.navigation;
                                 break;
                             case R.id.mine:
                                 selectFragment(4);
+                                titleResId = R.string.mine;
                                 break;
                         }
                         enableAppBarElevation(setElevation);
+                        getSupportActionBar().setTitle(titleResId);
                         return true;
                     }
                 });
@@ -134,5 +143,20 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             }
         }
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.search:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
