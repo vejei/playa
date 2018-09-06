@@ -16,6 +16,7 @@ public abstract class BaseRecyclerViewAdapter<D, VH extends RecyclerView.ViewHol
 
     public void setData(List<D> data) {
         this.data = data;
+        notifyDataSetChanged();
     }
 
     public List<D> getData() {
