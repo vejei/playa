@@ -1,5 +1,6 @@
 package io.github.zeleven.playa.ui.module.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -20,6 +21,7 @@ import io.github.zeleven.playa.ui.module.main.home.HomeFragment;
 import io.github.zeleven.playa.ui.module.main.mine.MineFragment;
 import io.github.zeleven.playa.ui.module.main.navigation.NavigationFragment;
 import io.github.zeleven.playa.ui.module.main.project.ProjectFragment;
+import io.github.zeleven.playa.ui.module.search.SearchActivity;
 import io.github.zeleven.playa.ui.widget.BottomNavigationViewEx;
 
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View {
@@ -155,6 +157,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.search:
+                startActivity(new Intent(this, SearchActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
