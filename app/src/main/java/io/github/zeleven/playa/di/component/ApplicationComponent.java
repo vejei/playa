@@ -6,6 +6,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import io.github.zeleven.playa.data.source.DataManager;
+import io.github.zeleven.playa.data.source.local.DatabaseHelper;
 import io.github.zeleven.playa.di.module.ApplicationModule;
 
 @Singleton
@@ -13,4 +14,5 @@ import io.github.zeleven.playa.di.module.ApplicationModule;
 public interface ApplicationComponent {
     Application application();
     DataManager dataManager();
+    DatabaseHelper databaseHelper();
 }
