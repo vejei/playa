@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.zeleven.playa.data.model.Category;
+import io.github.zeleven.playa.ui.module.main.hierarchy.detail.tabpage.HierarchyTabPageFragment;
 import io.github.zeleven.playa.ui.module.main.project.tabpage.ProjectTabPageFragment;
 
 public class TabViewPagerAdapterItem {
@@ -31,6 +32,17 @@ public class TabViewPagerAdapterItem {
             adapterItems.add(
                     new TabViewPagerAdapterItem(categories.get(i).getName(),
                     ProjectTabPageFragment.newInstance(categories.get(i).getId()))
+            );
+        }
+        return adapterItems;
+    }
+
+    public static List<TabViewPagerAdapterItem> createHierarchyTabFragments(List<Category> categories) {
+        ArrayList<TabViewPagerAdapterItem> adapterItems = new ArrayList<>();
+        for (int i = 0; i < categories.size(); i++) {
+            adapterItems.add(
+                    new TabViewPagerAdapterItem(categories.get(i).getName(),
+                            HierarchyTabPageFragment.newInstance(categories.get(i).getId()))
             );
         }
         return adapterItems;
