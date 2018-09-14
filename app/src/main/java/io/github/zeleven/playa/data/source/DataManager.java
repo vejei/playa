@@ -12,10 +12,13 @@ import io.github.zeleven.playa.data.model.Category;
 import io.github.zeleven.playa.data.model.HotKey;
 import io.github.zeleven.playa.data.model.LoginResponse;
 import io.github.zeleven.playa.data.model.NavCategory;
+import io.github.zeleven.playa.data.model.SearchHistory;
 import io.github.zeleven.playa.data.model.User;
 import io.github.zeleven.playa.data.source.local.DatabaseHelper;
 import io.github.zeleven.playa.data.source.remote.WanAndroidService;
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
+import io.realm.RealmResults;
 
 @Singleton
 public class DataManager {
@@ -87,5 +90,17 @@ public class DataManager {
 
     public void deleteLoggedInUser() {
         databaseHelper.deleteLoggedInUser();
+    }
+
+    public void saveSearchHistory(String keyword) {
+        databaseHelper.saveSearchHistory(keyword);
+    }
+
+    public List<SearchHistory> querySearchHistory() {
+        return databaseHelper.querySearchHistory();
+    }
+
+    public void deleteSearchHistory() {
+        databaseHelper.deleteSearchHistory();
     }
 }
