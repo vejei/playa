@@ -1,3 +1,57 @@
 <resources>
     <string name="app_name">Playa</string>
+    <string name="bottom_navigation_view_behavior">
+        io.github.zeleven.playa.ui.widget.BottomNavigationViewBehavior
+    </string>
+
+    <!-- 顶部导航菜单 -->
+    <string name="menu_item_search">搜索</string>
+
+    <!-- 底部导航 -->
+    <string name="home">首页</string>
+    <string name="project">项目</string>
+    <string name="hierarchy">体系</string>
+    <string name="navigation">导航</string>
+    <string name="mine">我的</string>
+
+    <!-- 底部导航：首页 -->
+    <string name="no_more_data">没有更多了</string>
+
+    <!-- 底部导航：我的 -->
+    <string name="click_to_login">点击登录 / 注册</string>
+    <string name="my_star">我的收藏</string>
+    <string name="feedback">问题反馈</string>
+    <string name="night_mode">夜间模式</string>
+    <string name="settings">设置</string>
+
+    <!-- 浏览器（WebView） -->
+    <string name="browser_menu_item_star">收藏</string>
+    <string name="browser_menu_item_share">分享</string>
+    <string name="browser_menu_item_reload">重新加载</string>
+    <string name="browser_menu_item_copy_link">复制链接</string>
+    <string name="browser_menu_item_open_in_browser">在浏览器中打开</string>
+    <string name="text_copied">已复制到剪贴板</string>
+    <string name="share_dialog_title">分享</string>
+    <string name="share_source">分享自玩安卓</string>
+
+    <!-- 搜索 -->
+    <string name="search_view_hint">输入关键词进行搜索</string>
+    <string name="hot_search_title">玩安卓热搜</string>
+    <string name="search_history_title">搜索历史</string>
+    <string name="clear_history_alert_dialog_message">要清除所有搜索记录吗？</string>
+    <string name="dialog_button_ok">是的</string>
+    <string name="dialog_button_cancel">取消</string>
+    
+    <!-- 注册、登录 -->
+    <string name="sign_in">登录</string>
+    <string name="sign_up">注册</string>
+    <string name="no_account_yet">还没有帐号？</string>
+    <string name="have_account">已有帐号？</string>
+    <string name="hint_username">用户名</string>
+    <string name="hint_password">密码</string>
+    <string name="hint_repeat_password">重复密码</string>
+    <string name="username_can_not_be_empty">用户名不能为空</string>
+    <string name="password_can_not_be_empty">密码不能为空</string>
+    <string name="logged_in">已登录</string>
+    <string name="logout_alert_message">你要退出你的帐号吗？</string>
 </resources>
