@@ -30,6 +30,11 @@ public abstract class BaseRecyclerViewAdapter<D, VH extends RecyclerView.ViewHol
         }
     }
 
+    public void removeItem(D item) {
+        data.remove(item);
+        notifyDataSetChanged();
+    }
+
     public void clear() {
         if (data != null) {
             data.clear();
