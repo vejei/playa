@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.module.main.MainActivity" android:theme="@style/SplashTheme">
+        <activity android:name=".ui.module.main.MainActivity" android:theme="@style/SplashTheme"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,6 +23,10 @@
         </activity>
 
         <activity android:name=".ui.module.browser.BrowserActivity"/>
+        <activity android:name=".ui.module.main.hierarchy.detail.HierarchyDetailActivity"/>
+        <activity android:name=".ui.module.search.SearchActivity"/>
+        <activity android:name=".ui.module.account.AccountActivity"/>
+        <activity android:name=".ui.module.settings.SettingsActivity"/>
     </application>
 
 </manifest>
