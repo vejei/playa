@@ -38,3 +38,16 @@
 	* `/module`，主要的功能模块
 	* `/widget`，自定义Widget
 * `app/src/main/java/io/github/zeleven/playa/utils`，一些工具类
+
+## Screenshots
+|启动图|首页|项目|
+|:-:|:-:|:-:|
+|![](/screenshots/S80915-154646.jpg)|![](/screenshots/S80915-154418.jpg)|![](/screenshots/S80915-154423.jpg)|
+
+|体系|导航|我的|
+|:-:|:-:|:-:|
+|![](/screenshots/S80915-154428.jpg)|![](/screenshots/S80915-154434.jpg)|![](/screenshots/S80915-154438.jpg)|
+
+|详情页|登录|搜索|
+|:-:|:-:|:-:|
+|![](/screenshots/S80915-154519.jpg)|![](/screenshots/S80915-154700.jpg)|![](/screenshots/S80915-154501.jpg)|
