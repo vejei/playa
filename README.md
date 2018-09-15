@@ -51,3 +51,9 @@
 |详情页|登录|搜索|
 |:-:|:-:|:-:|
 |![](/screenshots/S80915-154519.jpg)|![](/screenshots/S80915-154700.jpg)|![](/screenshots/S80915-154501.jpg)|
+
+## Author
+QQ群：779308363
+
+## License
+MIT协议，详细内容请查看[LICENSE文件](/LICENSE)
