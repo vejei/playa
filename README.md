@@ -53,7 +53,8 @@
 |![](/screenshots/S80915-154519.jpg)|![](/screenshots/S80915-154700.jpg)|![](/screenshots/S80915-154501.jpg)|
 
 ## Author
-QQ群：779308363
+* [微博](https://weibo.com/u/6659463044)
+* QQ群：779308363
 
 ## License
 MIT协议，详细内容请查看[LICENSE文件](/LICENSE)
