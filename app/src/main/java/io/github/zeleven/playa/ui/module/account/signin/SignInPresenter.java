@@ -65,7 +65,7 @@ public class SignInPresenter extends BasePresenter<SignInContract.View>
                 dataManager.saveLoggedInUser(
                         loginResponse.getUsername(), loginResponse.getPassword(), true
                 );
-                getView().loginSuccessful();
+                getView().loginSuccessful(loginResponse.getUsername());
             }
 
             @Override

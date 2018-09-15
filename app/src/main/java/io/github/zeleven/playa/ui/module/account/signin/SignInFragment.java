@@ -7,9 +7,12 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.github.zeleven.playa.R;
+import io.github.zeleven.playa.eventbus.LoginEvent;
 import io.github.zeleven.playa.ui.base.BaseFragment;
 import io.github.zeleven.playa.ui.module.account.signup.SignUpFragment;
 import io.github.zeleven.playa.ui.module.main.MainActivity;
@@ -75,9 +78,8 @@ public class SignInFragment extends BaseFragment<SignInPresenter> implements Sig
     }
 
     @Override
-    public void loginSuccessful() {
-        Intent intent = new Intent(context, MainActivity.class);
-        context.startActivity(intent);
+    public void loginSuccessful(String username) {
+        EventBus.getDefault().post(new LoginEvent(true, username));
         ((AppCompatActivity) context).finish();
     }
 
@@ -85,4 +87,20 @@ public class SignInFragment extends BaseFragment<SignInPresenter> implements Sig
     public void showError(String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
+
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        if (!EventBus.getDefault().isRegistered(this)) {
+//            EventBus.getDefault().register(this);
+//        }
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        if (EventBus.getDefault().isRegistered(this)) {
+//            EventBus.getDefault().unregister(this);
+//        }
+//        super.onStop();
+//    }
 }

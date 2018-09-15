@@ -6,7 +6,7 @@ public interface SignInContract {
     interface View extends BaseContract.View {
         void usernameEmpty(boolean isEmpty);
         void passwordEmpty(boolean isEmpty);
-        void loginSuccessful();
+        void loginSuccessful(String username);
     }
 
     interface Presenter extends BaseContract.Presenter<View> {

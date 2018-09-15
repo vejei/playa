@@ -5,7 +5,6 @@ import io.github.zeleven.playa.ui.base.BaseContract;
 
 public interface MineContract {
     interface View extends BaseContract.View {
-        void setLoggedInUserInfo();
     }
 
     interface Presenter extends BaseContract.Presenter<View> {

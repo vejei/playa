@@ -54,4 +54,16 @@
     <string name="password_can_not_be_empty">密码不能为空</string>
     <string name="logged_in">已登录</string>
     <string name="logout_alert_message">你要退出你的帐号吗？</string>
+
+    <!-- 设置 -->
+    <string name="toolbar_title_setting">设置</string>
+    <string name="pref_title_theme_switch">主题</string>
+    <string name="pref_title_no_image_mode">无图模式</string>
+    <string name="pref_summary_no_image_mode">非WIFI网络下不加载图片</string>
+    <string name="pref_title_clear_cache">清除缓存</string>
+    <string name="pref_title_version_info">版本号</string>
+    <string name="pref_summary_version_info">v 1.0.0 (1)</string>
+    <string name="pref_title_change_log">更新日志</string>
+    <string name="pref_title_open_source_libraries">开源组件</string>
+    <string name="pref_title_about">关于</string>
 </resources>
