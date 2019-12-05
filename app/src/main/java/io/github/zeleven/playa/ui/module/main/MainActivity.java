@@ -1,3 +1,4 @@
+
 package io.github.zeleven.playa.ui.module.main;
 
 import android.content.Intent;
@@ -29,7 +30,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     private FragmentManager fragmentManager;
     private List<Fragment> fragmentList = new ArrayList<>();
-
+    private static final String[] TAG_FRAGMENT=new String[]{"tag_home","tag_project","tag_hierarchy","tag_navigation","tag_mine"};
+    private int mIndex;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +48,13 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         fragmentManager = getSupportFragmentManager();
 
         // 创建 fragment
-        createFragments();
-        // 默认选中第一个 fragment，即 BottomNavigationView 的第一项
-        selectFragment(0);
+        createFragments(savedInstanceState);
+        // 默认选中第一个 fragment，即 BottomNavigationView 的第一项。如果之前有选择
+        if (null!=savedInstanceState) {
+            selectFragment(savedInstanceState.getInt("mIndex"));
+        }else {
+            selectFragment(0);
+        }
         getSupportActionBar().setTitle(R.string.home);
 
         setupBottomNavigationView();
@@ -105,30 +111,37 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     /**
      * 创建 fragment
      */
-    public void createFragments() {
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+    public void createFragments(Bundle savedInstanceState) {
+        if (null==savedInstanceState) {
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            HomeFragment homeFragment = new HomeFragment();
+            fragmentList.add(homeFragment);
+            fragmentTransaction.add(R.id.fragment_container, homeFragment, TAG_FRAGMENT[0]);
 
-        HomeFragment homeFragment = new HomeFragment();
-        fragmentList.add(homeFragment);
-        fragmentTransaction.add(R.id.fragment_container, homeFragment);
+            ProjectFragment projectFragment = new ProjectFragment();
+            fragmentList.add(projectFragment);
+            fragmentTransaction.add(R.id.fragment_container, projectFragment, TAG_FRAGMENT[1]);
 
-        ProjectFragment projectFragment = new ProjectFragment();
-        fragmentList.add(projectFragment);
-        fragmentTransaction.add(R.id.fragment_container, projectFragment);
+            HierarchyFragment hierarchyFragment = new HierarchyFragment();
+            fragmentList.add(hierarchyFragment);
+            fragmentTransaction.add(R.id.fragment_container, hierarchyFragment, TAG_FRAGMENT[2]);
 
-        HierarchyFragment hierarchyFragment = new HierarchyFragment();
-        fragmentList.add(hierarchyFragment);
-        fragmentTransaction.add(R.id.fragment_container, hierarchyFragment);
+            NavigationFragment navigationFragment = new NavigationFragment();
+            fragmentList.add(navigationFragment);
+            fragmentTransaction.add(R.id.fragment_container, navigationFragment, TAG_FRAGMENT[3]);
 
-        NavigationFragment navigationFragment = new NavigationFragment();
-        fragmentList.add(navigationFragment);
-        fragmentTransaction.add(R.id.fragment_container, navigationFragment);
+            MineFragment mineFragment = new MineFragment();
+            fragmentList.add(mineFragment);
+            fragmentTransaction.add(R.id.fragment_container, mineFragment, TAG_FRAGMENT[4]);
 
-        MineFragment mineFragment = new MineFragment();
-        fragmentList.add(mineFragment);
-        fragmentTransaction.add(R.id.fragment_container, mineFragment);
-
-        fragmentTransaction.commit();
+            fragmentTransaction.commit();
+        }else {
+            fragmentList.add(fragmentManager.findFragmentByTag(TAG_FRAGMENT[0]));
+            fragmentList.add(fragmentManager.findFragmentByTag(TAG_FRAGMENT[1]));
+            fragmentList.add(fragmentManager.findFragmentByTag(TAG_FRAGMENT[2]));
+            fragmentList.add(fragmentManager.findFragmentByTag(TAG_FRAGMENT[3]));
+            fragmentList.add(fragmentManager.findFragmentByTag(TAG_FRAGMENT[4]));
+        }
     }
 
     /**
@@ -136,6 +149,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
      * @param index fragment 在列表中的下标
      */
     public void selectFragment(int index) {
+        this.mIndex =index;
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         for (int i = 0; i < fragmentList.size(); i++) {
             if (i == index) {
@@ -161,5 +175,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    protected  void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("mIndex", mIndex);
     }
 }
